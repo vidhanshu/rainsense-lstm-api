@@ -1,5 +1,6 @@
-from flask import Flask,render_template,url_for,request,jsonify
+from flask import Flask, request
 import pandas as pd
+from utils import get_tip
 import pickle
 
 app = Flask(__name__)
@@ -67,10 +68,11 @@ def predict():
 					 rainToday , month , day]
 		pred = model.predict(input_lst)
 		output = pred
+
 		if output:
-			return "0"
+			return {"tip": get_tip(1), "rain": "1"}
 		else:
-			return "1"
+			return {"tip": get_tip(0), "rain": "0"}
 	return "Method not allowed"
 
 if __name__=='__main__':
