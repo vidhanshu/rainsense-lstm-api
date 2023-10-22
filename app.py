@@ -2,13 +2,13 @@ from flask import Flask,render_template,url_for,request,jsonify
 import pandas as pd
 import pickle
 
-app = Flask(__name__, template_folder="template")
+app = Flask(__name__)
 model = pickle.load(open("./models/cat.pkl", "rb"))
 print("Model Loaded")
 
 @app.route("/",methods=['GET'])
 def home():
-	return render_template("index.html")
+	return "Server is up and running on port 5000"
 
 @app.route("/predict",methods=['GET', 'POST'])
 def predict():
