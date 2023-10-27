@@ -1,9 +1,11 @@
 from flask import Flask, request
+from flask_cors import CORS
 import pandas as pd
 from utils import get_tip
 import pickle
 
 app = Flask(__name__)
+CORS(app)
 model = pickle.load(open("./models/lstm_rainsense.pkl", "rb"))
 print("Model Loaded")
 
