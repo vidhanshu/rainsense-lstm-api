@@ -4,7 +4,7 @@ from utils import get_tip
 import pickle
 
 app = Flask(__name__)
-model = pickle.load(open("./models/cat.pkl", "rb"))
+model = pickle.load(open("./models/lstm_rainsense.pkl", "rb"))
 print("Model Loaded")
 
 @app.route("/",methods=['GET'])
